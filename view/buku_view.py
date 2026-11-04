@@ -64,7 +64,7 @@ class BukuView(ctk.CTk):
             fill="x",
         )
 
-        # Setiap tombol hanya dibuat sekali di view.
+        # Tombol simpan
         self.btn_simpan = ctk.CTkButton(
             self.frame_kiri,
             text="Simpan Data",
@@ -77,6 +77,7 @@ class BukuView(ctk.CTk):
             fill="x",
         )
 
+        # Tombol perbarui
         self.btn_update = ctk.CTkButton(
             self.frame_kiri,
             text="Perbarui Data (Update)",
@@ -89,6 +90,7 @@ class BukuView(ctk.CTk):
             fill="x",
         )
 
+        # Tombol hapus
         self.btn_hapus = ctk.CTkButton(
             self.frame_kiri,
             text="Hapus Data (Delete)",
@@ -97,6 +99,19 @@ class BukuView(ctk.CTk):
         )
         self.btn_hapus.pack(
             pady=10,
+            padx=15,
+            fill="x",
+        )
+
+        # Tombol log out
+        self.btn_logout = ctk.CTkButton(
+            self.frame_kiri,
+            text="Log Out",
+            fg_color="gray",
+        )
+        self.btn_logout.pack(
+            side="bottom",
+            pady=15,
             padx=15,
             fill="x",
         )

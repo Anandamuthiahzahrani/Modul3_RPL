@@ -1,5 +1,5 @@
 from unittest.mock import MagicMock, patch
-from models.buku_model import BukuModel
+from models.model_buku import BukuModel
 
 
 def test_create_buku_berhasil():
@@ -16,10 +16,13 @@ def test_create_buku_berhasil():
 
     # Memverifikasi apakah fungsi mengembalikan nilai True
     assert hasil is True
+
     # Memverifikasi apakah cursor.execute benar-benar dipanggil
     mock_cursor.execute.assert_called_once()
+
     # Memverifikasi apakah perintah commit (simpan) dipanggil
     model.conn.commit.assert_called_once()
+
 
 def test_get_all_buku():
     # Membuat koneksi dan cursor tiruan
@@ -32,7 +35,7 @@ def test_get_all_buku():
             "id_buku": 1,
             "judul": "Pemrograman Python",
             "penulis": "Andi",
-            "tahun_terbit": 2024
+            "tahun_terbit": 2024,
         }
     ]
 
@@ -40,7 +43,7 @@ def test_get_all_buku():
     mock_conn.cursor.return_value = mock_cursor
 
     # Menggantikan koneksi database dengan mock
-    with patch("models.buku_model.Database") as mock_database:
+    with patch("models.model_buku.Database") as mock_database:
         mock_database.return_value.get_connection.return_value = mock_conn
 
         model = BukuModel()
@@ -54,3 +57,4 @@ def test_get_all_buku():
 
     # Memastikan cursor ditutup
     mock_cursor.close.assert_called_once()
+    
